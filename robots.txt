@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sapporo-relife.com/sitemap.xml
