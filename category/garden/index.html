@@ -134,5 +134,25 @@
   <p class="foot-note">当サイトはアフィリエイトプログラムに参加しており、記事内に広告リンクが含まれる場合があります。</p>
   <p>© 2023–2026 さっぽろに棲みましょ</p>
 </footer>
+<script>
+/* 外部リンク（アフィリエイトカードを含む）は別タブで開く */
+(function(){
+  function fix(root){
+    var as=(root||document).querySelectorAll('a[href]');
+    for(var i=0;i<as.length;i++){
+      var a=as[i],h=a.getAttribute('href')||'';
+      if(!/^(https?:)?\/\//i.test(h))continue;
+      var u;try{u=new URL(h,location.href);}catch(e){continue;}
+      if(u.hostname===location.hostname&&location.protocol!=='file:')continue;
+      a.setAttribute('target','_blank');
+      var rel=(a.getAttribute('rel')||'').split(/\s+/);
+      ['noopener'].forEach(function(r){if(rel.indexOf(r)<0)rel.push(r);});
+      a.setAttribute('rel',rel.join(' ').trim());
+    }
+  }
+  fix();
+  new MutationObserver(function(){fix();}).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
