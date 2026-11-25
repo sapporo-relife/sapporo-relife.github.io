@@ -188,7 +188,6 @@
       if(!/^(https?:)?\/\//i.test(h))continue;
       var u;try{u=new URL(h,location.href);}catch(e){continue;}
       if(u.hostname===location.hostname&&location.protocol!=='file:')continue;
-      if(h.indexOf('a_id=4481211')>-1){a.removeAttribute('target');continue;} /* 楽天: BRAVE等で新タブが開かない対策（テスト） */
       a.setAttribute('target','_blank');
       var rel=(a.getAttribute('rel')||'').split(/\s+/);
       ['noopener'].forEach(function(r){if(rel.indexOf(r)<0)rel.push(r);});
